@@ -1,0 +1,12 @@
+#!/usr/bin/expect
+
+set password "123456"
+puts $password
+send_user "$password\n"
+
+# 特殊参数
+# expect 1805.exp file host dir
+set file [lindex $argv 0]
+set host [lindex $argv 1]
+set dir [lindex $argv 2]
+send_user "$file\t$host\t$dir\n"

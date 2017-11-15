@@ -1,0 +1,8 @@
+#!/usr/bin/expect
+send_user "I am oldboy.\n"
+send_user "I am linuxer.\t"
+send_user "My blog is http://baidu.com\n"
+
+exit -onexit {
+    send_user "Good bye.\n"
+}

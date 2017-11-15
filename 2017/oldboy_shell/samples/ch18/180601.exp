@@ -1,0 +1,8 @@
+#!/usr/bin/expect
+# send_user "$argc \n"
+# send_user "$argv0 \n"
+if {$argc != 26} {
+    puts "bad."
+} else {
+    puts "good."
+}

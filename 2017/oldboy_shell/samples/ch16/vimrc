@@ -1,0 +1,108 @@
+
+" ~/.vimrc
+
+” 关闭兼容模式
+set nocompatible
+
+" 设置历史记录步数
+set history=100
+
+" 当文件在外部被修改时，自动更新该文件
+set autoread
+
+set nocp
+set nu
+
+" Tab related
+set ts=4
+set sw=4
+set smarttab
+set et
+set ambiwidth=double
+
+" Format related
+set tw=78
+set lbr
+set fo+=mB
+
+" Indent related
+set cin
+set ai
+set cino=:0g0t0(susj1
+
+" Editing related
+set backspace=indent,eol,start
+set whichwrap=b,s,<,>,[,]
+"set mouse=a
+set selectmode=
+set mousemodel=popup
+set keymodel=
+set selection=inclusive
+
+" Misc
+"set wildmenu
+"set spell
+
+" Encoding related
+set encoding=utf-8
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+" File type related
+filetype plugin indent on
+
+" Display related
+set ru
+set sm
+set hls
+if (has("gui_running"))
+    set guioptions+=b
+    colo torte
+    set nowrap
+else
+    colo ron
+    set wrap
+endif
+syntax on
+
+"=============================================================================
+" Platform dependent settings
+"=============================================================================
+
+if (has("win32"))
+
+    "-------------------------------------------------------------------------
+    " Win32
+    "-------------------------------------------------------------------------
+
+    if (has("gui_running"))
+        set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI
+        set guifontwide=NSimSun:h9:cGB2312
+    endif
+
+else
+
+    if (has("gui_running"))
+        set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+    endif
+
+endif
+
+highlight Comment ctermfg=green guifg=green
+
+
+
+
+autocmd BufNewFile *.sh exec ":call SetTitle()"
+func SetTitle()
+    if expadd("%:e") == 'sh'
+        call setline(1, "#!/bin/sh")
+        call setline(2, "# Author: ysai")
+        call setline(3, "# Blog: http://iteye.com")
+        call setline(4, "# Time: ".strftime("%F %T"))
+        call setline(5, "# Name: ".expand("%"))
+        call setline(6, "# Version: V1.0")
+        call setline(7, "# Description: This is a test script.")
+    endfi
+endfunc

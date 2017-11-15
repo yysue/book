@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+spawn ssh tb@192.168.5.111 uptime
+set timeout 3
+expect {
+    "yes/no" {exp_send "yes\r";exp_continue}
+    #"*password" {exp_send "123456\r"}
+}
+expect timeout {puts "Request timeout by oldboy."; return}
+expect eof

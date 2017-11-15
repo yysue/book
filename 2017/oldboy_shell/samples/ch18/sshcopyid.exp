@@ -1,0 +1,7 @@
+#!/usr/bin/expect
+spawn ssh-copy-id ysai@192.168.5.106
+expect {
+    "yes/no" {exp_send "yes\r"; exp_continue}
+    "password" {exp_send "123456\r"}
+}
+expect eof

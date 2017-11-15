@@ -1,0 +1,8 @@
+#!/usr/bin/expect
+spawn sh 1803.sh
+expect {
+    "*name*" {exp_send "sue\r"; exp_continue}
+    "*password*" {send "suelove\r"; exp_continue}
+    "*mail*" {exp_send "sue@gmail.com\r"}
+}
+expect eof

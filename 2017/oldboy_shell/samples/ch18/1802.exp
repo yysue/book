@@ -1,0 +1,7 @@
+#!/usr/bin/expect
+spawn ssh tb@192.168.5.111 uptime
+expect {
+    "yes/no" {exp_send "yes\r";exp_continue}
+    "*password" {exp_send "123456\r"}
+}
+expect eof

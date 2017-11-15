@@ -1,0 +1,16 @@
+<beans>
+	<!-- enable processing of annotations such as @Autowired and @Configuration -->
+	<context:annotation-config />
+	<!-- picks up and registers AppConfig as a bean definition -->
+	<context:component-scan base-package="com.demo" />
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<!-- <bean class="com.acme.AppConfig" /> -->
+
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driver" value="${jdbc.mysql.driver}" />
+		<property name="url" value="${jdbc.mysql.url}" />
+		<property name="username" value="${jdbc.mysql.username}" />
+		<property name="password" value="${jdbc.mysql.password}" />
+	</bean>
+</beans>
